@@ -1,0 +1,174 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu - APP WEB</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    </head>
+</head>
+<body>
+
+    <style>
+form {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 40px;
+  background-color: #D3d3d3;
+  border: 1px solid #000000;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: 120%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+legend {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
+text-align: center;}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #000000;
+}
+
+input[type="text"],
+input[type="email"]{
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  background-color: #fff;
+  color: #000000;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus {
+  border-color: #aaa;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+input[type="tel"]{
+    width: 30%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  margin-right: 1000px;
+  background-color: #fff;
+  color: #000000;
+}
+
+input[type="number"]{
+    width: 30%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  margin-right: 1000px;
+  background-color: #fff;
+  color: #000000;
+}
+
+select {
+  width: 300%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  background-color: #fff;
+  color: #333;
+}
+
+input[type="submit"] {
+  background-color: #4CAF50;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  
+}
+
+input[type="submit"]:hover {
+  background-color: #3e8e41;
+}
+</style>
+
+    <form method="POST" action='/cadastrarUsuario' class="border row g-3 needs-validation" novalidate>
+        <legend>Cadastro de Empresa</legend>
+        <label for="cnpj">CNPJ:</label>
+        <input type="number" id="cnpj" name="cnpj">
+
+        <label for="razao_social">Razão Social ou Nome do Fornecedor:</label>
+        <input type="text" id="razao_social" name="razao_social">
+
+        <label for="nome_fantasia">Nome da Empresa:</label>
+        <input type="text" id="nome_fantasia" name="nome_fantasia">
+
+        <label for="endereco">Endereço:</label>
+        <input type="text" id="endereco" name="endereco">
+
+        <label for="cidade">Cidade:</label>
+        <input type="text" id="cidade" name="cidade">
+
+        <label for="estado">UF</label>
+        <select  id="estado" name="estado" required>
+            <option selected disabled value="">Escolha um estado...</option>
+            <option value="AC">AC</option>
+            <option value="AL">AL</option>
+            <option value="AP">AP</option>
+            <option value="AM">AM</option>
+            <option value="BA">BA</option>
+            <option value="CE">CE</option>
+            <option value="DF">DF</option>
+            <option value="ES">ES</option>
+            <option value="GO">GO</option>
+            <option value="MA">MA</option>
+            <option value="MT">MT</option>
+            <option value="MS">MS</option>
+            <option value="MG">MG</option>
+            <option value="PA">PA</option>
+            <option value="PB">PB</option>
+            <option value="PR">PR</option>
+            <option value="PE">PE</option>
+            <option value="PI">PI</option>
+            <option value="RJ">RJ</option>
+            <option value="RN">RN</option>
+            <option value="RS">RS</option>
+            <option value="RO">RO</option>
+            <option value="RR">RR</option>
+            <option value="SC">SC</option>
+            <option value="SP">SP</option>
+            <option value="SE">SE</option>
+            <option value="TO">TO</option>
+        </select>
+
+        <label for="cep">CEP:</label>
+        <input type="number" id="cep" name="cep" maxlength="8">
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email">
+
+        <label for="telefone">Telefone:</label>
+        <input type="tel" id="telefone" name="telefone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+
+        <div class="col-12 mb-3">
+            <button class="btn btn-primary" type="submit">Cadastrar</button>
+            <a class="btn btn-secondary" href="/">Voltar</a>                   
+        </div>
+    </form>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+</html>

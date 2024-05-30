@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu - APP WEB</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+  <style>
+    
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #e9e3e3;
+  }
+  
+  .nav {
+    background-color: #333;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .nav-item {
+    padding: 10px;
+  }
+  
+  .nav-link {
+    color: white;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .nav-link:hover {
+    background-color: #111111;
+    border-radius: 10px;
+  }
+  
+  .active {
+    background-color: #4CAF50; 
+    border-radius: 10px;
+  }
+  
+  h1 {
+    text-align: center;
+    padding: 20px;
+    color: #000000;
+  }
+
+  h4 {
+    text-align: center;
+    padding: 20px;
+    color: #000000;
+  }
+  
+  .disabled {
+    color: #ffffff;
+    cursor: not-allowed;
+  }
+  </style> 
+
+    <ul class="nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/cadastroUsuario.html">Cadastro</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/listarUsuarios">Listagem</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/logout" tabindex="-1" aria-disabled="true">Sair</a>
+        </li>
+      </ul>
+      <br/>
+      <h1>Seja bem-vindo ao nosso site!</h1>
+      <h4>Cadastre sua empresa!</h4>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+</html>
