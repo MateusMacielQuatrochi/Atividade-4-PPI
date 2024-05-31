@@ -1,4 +1,4 @@
-import express, { response } from 'express';
+import express from 'express';
 import path from 'path';
 import session from 'express-session';
 import cookieParser from 'cookie-parser';
@@ -14,7 +14,7 @@ const app = express();
 app.use(express.urlencoded({ extended: true })); 
 
 app.use(session({
-    secret: 'Minh4Ch4v3S3cr3t4',
+    secret: 'MinH4Ch4v3S3cr3t4',
     resave: true,
     saveUninitialized: true,
     cookie: {
@@ -38,29 +38,25 @@ else{
 
 
 function cadastrarUsuario(requisicao, resposta){
-    const cnpj = requisicao.body.cnpj;
-    const razao_social = requisicao.body.razao_social;
-    const nome_fantasia = requisicao.body.nome_fantasia;
-    const endereco = requisicao.body.endereco;
-    const cidade = requisicao.body.cidade;
-    const estado = requisicao.body.estado;
-    const cep = requisicao.body.cep;
-    const email = requisicao.body.email;
-    const telefone = requisicao.body. telefone;
+    const cod = requisicao.body.cod;
+    const desc = requisicao.body.desc;
+    const pc = requisicao.body.pc;
+    const pv = requisicao.body.pv;
+    const dv = requisicao.body.dv;
+    const qe = requisicao.body.qe;
+    const nf = requisicao.body.nf;
 
     //verificando se os campos foram preenchidos (não estão vazios)
-    if (cnpj && razao_social && nome_fantasia && endereco && cidade && estado && cep && email && telefone) 
+    if (cod && desc && pc && pv && dv && qe && nf) 
     {
         listaUsuarios.push({
-            cnpj: cnpj,
-            razao_social: razao_social,
-            nome_fantasia: nome_fantasia,
-            endereco: endereco,
-            cidade: cidade,
-            estado: estado,
-            cep: cep,
-            email: email,
-            telefone: telefone
+            cod: cod,
+            desc: desc,
+            pc: pc,
+            pv: pv,
+            dv: dv,
+            qe: qe,
+            nf: nf,
         });
         resposta.redirect('/listarUsuarios');
     }
@@ -108,8 +104,7 @@ function cadastrarUsuario(requisicao, resposta){
        color: #000000;
      }
      
-     input[type="text"],
-     input[type="email"]{
+     input[type="text"]{
        width: 100%;
        padding: 10px;
        border: 1px solid #ccc;
@@ -125,16 +120,6 @@ function cadastrarUsuario(requisicao, resposta){
        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
      }
      
-     input[type="tel"]{
-         width: 30%;
-       padding: 10px;
-       border: 1px solid #ccc;
-       border-radius: 5px;
-       margin-bottom: 20px;
-       margin-right: 1000px;
-       background-color: #fff;
-       color: #000000;
-     }
      
      input[type="number"]{
          width: 30%;
@@ -173,108 +158,65 @@ function cadastrarUsuario(requisicao, resposta){
          </style>
      
          <form method="POST" action='/cadastrarUsuario' class="border row g-3 needs-validation" novalidate>
-             <legend>Cadastro de Empresa</legend>
-             <label for="cnpj">CNPJ:</label>
-             <input type="number" id="cnpj" name="cnpj">`);
-             if (cnpj == ""){
+         <legend>Cadastro de Empresa</legend>
+         <label for="cod">Código de barras:</label>
+         <input type="number" id="cod" name="cod">`);
+             if (cod == ""){
                 resposta.write(`
                             <div m-2 class="alert alert-danger" role="alert">
-                                Por favor, informe o CNPJ da empresa.
+                                Por favor, informe o código de barras do porduto.
                             </div>
                 `);
             }
 
-        resposta.write(`
-        <label for="razao_social">Razão Social ou Nome do Fornecedor:</label>
-        <input type="text" id="razao_social" name="razao_social">`);
-        if (razao_social == ""){
-            resposta.write(`
-                        <div m-2 class="alert alert-danger" role="alert">
-                            Por favor, informe o fornecedor da empresa.
-                        </div>
-            `);
-        }
-        resposta.write(` <label for="nome_fantasia">Nome da Empresa:</label>
-        <input type="text" id="nome_fantasia" name="nome_fantasia">`);
-        if (nome_fantasia == ""){
+        
+        resposta.write(` <label for="desc">Descrição do produto:</label>
+        <input type="text" id="desc" name="desc">`);
+        if (desc == ""){
             resposta.write(`<div m-2 class="alert alert-danger" role="alert">
-                                Por favor, informe o nome da empresa.
+                                Por favor, informe a descrição do produto.
                             </div>`);
         }        
         resposta.write(`
-        <label for="endereco">Endereço:</label>
-        <input type="text" id="endereco" name="endereco">
+        <label for="pc">Preço de custo:</label>
+        <input type="number" id="pc" name="pc">
         `);            
-        if (endereco == ""){
+        if (pc == ""){
             resposta.write(`<div class="alert alert-danger" role="alert">
-                                Por favor, informe o endereço da empresa.
+                                Por favor, informe o preço de custo do produto.
                             </div>`);
         }
-        resposta.write(`     <label for="cidade">Cidade:</label>
-        <input type="text" id="cidade" name="cidade">`
+        resposta.write(`    <label for="pv">Preço de venda:</label>
+        <input type="number" id="pv" name="pv">`
         );
-        if (cidade == ""){
+        if (pv == ""){
             resposta.write(`<div class="alert alert-danger" role="alert">
-                                Por favor, informe a cidade da empresa.
+                                Por favor, informe o preço de venda do produto.
                             </div>`);
         }
-        resposta.write(`<label for="estado" class="form-label">UF</label>
-        <select class="form-select" id="estado" name="estado" required>
-            <option selected disabled value="">Escolha um estado...</option>
-            <option value="AC">AC</option>
-            <option value="AL">AL</option>
-            <option value="AP">AP</option>
-            <option value="AM">AM</option>
-            <option value="BA">BA</option>
-            <option value="CE">CE</option>
-            <option value="DF">DF</option>
-            <option value="ES">ES</option>
-            <option value="GO">GO</option>
-            <option value="MA">MA</option>
-            <option value="MT">MT</option>
-            <option value="MS">MS</option>
-            <option value="MG">MG</option>
-            <option value="PA">PA</option>
-            <option value="PB">PB</option>
-            <option value="PR">PR</option>
-            <option value="PE">PE</option>
-            <option value="PI">PI</option>
-            <option value="RJ">RJ</option>
-            <option value="RN">RN</option>
-            <option value="RS">RS</option>
-            <option value="RO">RO</option>
-            <option value="RR">RR</option>
-            <option value="SC">SC</option>
-            <option value="SP">SP</option>
-            <option value="SE">SE</option>
-            <option value="TO">TO</option>
-        </select>`
-        );
-        if (!estado){
+       
+        resposta.write(` <label for="dv">Data de validade:</label>
+        <input type="date" id="dv" name="dv">
+`);
+        if (dv == ""){
             resposta.write(`<div class="alert alert-danger" role="alert">
-                                Por favor, selecione um estado.
-                            </div>`);
-        }
-        resposta.write(`<label for="cep">CEP:</label>
-        <input type="number" id="cep" name="cep" maxlength="8">`);
-        if (cep == ""){
-            resposta.write(`<div class="alert alert-danger" role="alert">
-                                Por favor, informe o CEP da empresa.
+                                Por favor, informe a data de validade do produto.
                             </div>`);
         }
 
-        resposta.write(` <label for="email">Email:</label>
-        <input type="email" id="email" name="email">`);
-        if (email == ""){
+        resposta.write(` <label for="qe">Quantidade em estoque</label>
+        <input type="number" id="qe" name="qe">`);
+        if (qe == ""){
             resposta.write(`<div class="alert alert-danger" role="alert">
-                                Por favor, informe o e-mail da empresa.
+                                Por favor, informe a quantidade de estoque do produto.
                             </div>`);
         }
-        resposta.write(` <label for="telefone">Telefone:</label>
-        <input type="tel" id="telefone" name="telefone" required>`);
-        if (telefone == ""){
+        resposta.write(`  <label for="nf">Nome do fabricante:</label>
+        <input type="text" id="nf" name="nf">
+`);
+        if (nf == ""){
             resposta.write(`<div class="alert alert-danger" role="alert">
-                                Por favor, informe o telefone da empresa.
+                                Por favor, informe o nome do fabricante do produto.
                             </div>`);
         }
         
@@ -315,11 +257,11 @@ else{
     resposta.write('<body>');
     resposta.write('<p>Usuário ou senha invalidos</p>');
     resposta.write('<a href="/login.html">Voltar</a>');
-    if(req.cookie.dataUltimoAcesso){
-        resp.write('<p>');
-        resp.write('Seu ultimo acesso foi em ' + requ.cookie.dataUltimoAcesso);
-        resp.write('</p>');
-      }
+    if (requisicao.cookies.dataUltimoAcesso){
+        resposta.write('<p>');
+        resposta.write('Seu último acesso foi em ' + requisicao.cookies.dataUltimoAcesso);
+        resposta.write('</p>');
+    }
     resposta.write('</body>');
     resposta.write('</html>');
     //resposta.write('<input type="button" value="voltar" onclick="history.go(-1)"/>');
@@ -353,42 +295,36 @@ app.get('/listarUsuarios', usuarioEstaAutenticado, (req,resp)=>{
     resp.write('<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">')
     resp.write('</head>');
     resp.write('<body>');
-    resp.write('<h1>Lista de Empresas</h1>');
+    resp.write('<h1>Lista de Produtos</h1>');
     resp.write('<table class="table table-success table-s">');
     resp.write('<tr>');
-    resp.write('<th>CNPJ</th>');
-    resp.write('<th>Razão Social ou Nome do Fornecedor</th>');
-    resp.write('<th>Nome da Empresa</th>');
-    resp.write(`<th>Endereço</th>`);
-    resp.write('<th>Cidade</th>');
-    resp.write('<th>Estado</th>');
-    resp.write('<th>CEP</th>');
-    resp.write('<th>Email</th>');
-    resp.write('<th>Telefone</th>');
+    resp.write('<th>Codigo de barras</th>');
+    resp.write('<th>Descrição do produto</th>');
+    resp.write('<th>Preço de custo</th>');
+    resp.write(`<th>Preço de venda</th>`);
+    resp.write('<th>Data de validade</th>');
+    resp.write('<th>Quantidade em estoque</th>');
+    resp.write('<th>Nome do fabricante</th>');
     resp.write('</tr>');
     for (let i=0; i<listaUsuarios.length; i++){
         resp.write('<tr>');
-        resp.write(`<td>${listaUsuarios[i].cnpj}`);
-        resp.write(`<td>${listaUsuarios[i].razao_social}`);
-        resp.write(`<td>${listaUsuarios[i].nome_fantasia}`);
-        resp.write(`<td>${listaUsuarios[i].endereco}`);
-        resp.write(`<td>${listaUsuarios[i].cidade}`);
-        resp.write(`<td>${listaUsuarios[i].estado}`);
-        resp.write(`<td>${listaUsuarios[i].cep}`);
-        resp.write(`<td>${listaUsuarios[i].email}`);
-        resp.write(`<td>${listaUsuarios[i].telefone}`);
+        resp.write(`<td>${listaUsuarios[i].cod}`);
+        resp.write(`<td>${listaUsuarios[i].desc}`);
+        resp.write(`<td>${listaUsuarios[i].pc}`);
+        resp.write(`<td>${listaUsuarios[i].pv}`);
+        resp.write(`<td>${listaUsuarios[i].dv}`);
+        resp.write(`<td>${listaUsuarios[i].qe}`);
+        resp.write(`<td>${listaUsuarios[i].nf}`);
         resp.write('</tr>');
     }
     resp.write('</table>');
     resp.write('<a class="btn btn-secondary" href="/">Voltar</a> ');
-    resp.write('<br/>');
-
-    if(req.cookie.dataUltimoAcesso){
+    if (req.cookies.dataUltimoAcesso){
         resp.write('<p>');
-        resp.write('Seu ultimo acesso foi em ' + req.cookie.dataUltimoAcesso);
+        resp.write('Seu último acesso foi em ' + req.cookies.dataUltimoAcesso);
         resp.write('</p>');
-      }
-
+    }
+    resp.write('<br/>');
     resp.write('</body>');
     resp.write('</html>');
     resp.end();

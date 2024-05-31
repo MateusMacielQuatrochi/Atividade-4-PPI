@@ -40,8 +40,7 @@ label {
   color: #000000;
 }
 
-input[type="text"],
-input[type="email"]{
+input[type="text"]{
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
@@ -57,16 +56,6 @@ input[type="email"]:focus {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-input[type="tel"]{
-    width: 30%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  margin-bottom: 20px;
-  margin-right: 1000px;
-  background-color: #fff;
-  color: #000000;
-}
 
 input[type="number"]{
     width: 30%;
@@ -105,62 +94,27 @@ input[type="submit"]:hover {
 </style>
 
     <form method="POST" action='/cadastrarUsuario' class="border row g-3 needs-validation" novalidate>
-        <legend>Cadastro de Empresa</legend>
-        <label for="cnpj">CNPJ:</label>
-        <input type="number" id="cnpj" name="cnpj">
+        <legend>Cadastro de produto</legend>
+        <label for="cod">Código de barras:</label>
+        <input type="number" id="cod" name="cod">
 
-        <label for="razao_social">Razão Social ou Nome do Fornecedor:</label>
-        <input type="text" id="razao_social" name="razao_social">
+        <label for="desc">Descrição do produto:</label>
+        <input type="text" id="desc" name="desc">
 
-        <label for="nome_fantasia">Nome da Empresa:</label>
-        <input type="text" id="nome_fantasia" name="nome_fantasia">
+        <label for="pc">Preço de custo:</label>
+        <input type="number" id="pc" name="pc">
 
-        <label for="endereco">Endereço:</label>
-        <input type="text" id="endereco" name="endereco">
+        <label for="pv">Preço de venda:</label>
+        <input type="number" id="pv" name="pv">
 
-        <label for="cidade">Cidade:</label>
-        <input type="text" id="cidade" name="cidade">
+        <label for="dv">Data de validade:</label>
+        <input type="date" id="dv" name="dv">
 
-        <label for="estado">UF</label>
-        <select  id="estado" name="estado" required>
-            <option selected disabled value="">Escolha um estado...</option>
-            <option value="AC">AC</option>
-            <option value="AL">AL</option>
-            <option value="AP">AP</option>
-            <option value="AM">AM</option>
-            <option value="BA">BA</option>
-            <option value="CE">CE</option>
-            <option value="DF">DF</option>
-            <option value="ES">ES</option>
-            <option value="GO">GO</option>
-            <option value="MA">MA</option>
-            <option value="MT">MT</option>
-            <option value="MS">MS</option>
-            <option value="MG">MG</option>
-            <option value="PA">PA</option>
-            <option value="PB">PB</option>
-            <option value="PR">PR</option>
-            <option value="PE">PE</option>
-            <option value="PI">PI</option>
-            <option value="RJ">RJ</option>
-            <option value="RN">RN</option>
-            <option value="RS">RS</option>
-            <option value="RO">RO</option>
-            <option value="RR">RR</option>
-            <option value="SC">SC</option>
-            <option value="SP">SP</option>
-            <option value="SE">SE</option>
-            <option value="TO">TO</option>
-        </select>
+        <label for="qe">Quantidade em estoque</label>
+        <input type="number" id="qe" name="qe">
 
-        <label for="cep">CEP:</label>
-        <input type="number" id="cep" name="cep" maxlength="8">
-
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email">
-
-        <label for="telefone">Telefone:</label>
-        <input type="tel" id="telefone" name="telefone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+        <label for="nf">Nome do fabricante:</label>
+        <input type="text" id="nf" name="nf">
 
         <div class="col-12 mb-3">
             <button class="btn btn-primary" type="submit">Cadastrar</button>
