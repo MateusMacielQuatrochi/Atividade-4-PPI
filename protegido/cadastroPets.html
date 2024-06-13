@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro-Interessado</title>
+    <title>Cadastro-Pets</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     </head>
@@ -40,8 +40,7 @@ label {
   color: #000000;
 }
 
-input[type="text"],
-input[type="email"]{
+input[type="text"]{
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
@@ -58,7 +57,7 @@ input[type="email"]:focus {
 }
 
 
-input[type="tel"]{
+input[type="number"]{
     width: 40%;
   padding: 10px;
   border: 1px solid #ccc;
@@ -94,16 +93,16 @@ input[type="submit"]:hover {
 }
 </style>
 
-    <form method="POST" action='/cadastrarUsuario' class="border row g-3 needs-validation" novalidate>
-        <legend>Cadastro de Interessado</legend>
-        <label for="name">Nome:</label>
-        <input type="text" id="name" name="name">
+    <form method="POST" action='/cadastrarPet' class="border row g-3 needs-validation" novalidate>
+        <legend>Cadastro de Pets</legend>
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome">
 
-        <label for="desc">Email:</label>
-        <input type="email" id="email" name="email">
+        <label for="raca">Raça:</label>
+        <input type="text" id="raca" name="raca">
 
-        <label for="pc">Telefone:</label>
-        <input type="tel" id="tel" name="tel">
+        <label for="idade">Idade(em anos):</label>
+        <input type="number" id="idade" name="idade">
 
         <div class="col-12 mb-3">
             <button class="btn btn-primary" type="submit">Cadastrar</button>
