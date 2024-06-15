@@ -20,7 +20,7 @@ app.use(session({
     resave: true,
     saveUninitialized: true,
     cookie: {
-        maxAge: 1000 * 60 * 15 //15 minutos
+        maxAge: 1000 * 60 * 30 //30 minutos
     }
 }));
 
@@ -365,6 +365,8 @@ if(usuario == 'admin' && senha == '123'){
     });
     resposta.redirect('/');
 }
+
+
 else{
     resposta.write('<!DOCTYPE html>');
     resposta.write('<html>');
@@ -580,8 +582,40 @@ resp.write('</body>');
 resp.write('</html>');
 resp.end();
 });
-                
+
+
+
+  app.get('/', usuarioEstaAutenticado, (req, resp) => {
+    resp.write('<!DOCTYPE html>');
+    resp.write('<html>');
+    resp.write('<head>');
+    resp.write('<title>Sistema de Adoção</title>');
+    resp.write('<meta charset="utf-8">');
+    resp.write('</head>');
+    resp.write('<body>');
+    resp.write('<h1>Sistema de Adoção</h1>');
+    resp.write('<p>Seja bem-vindo!</p>');
+    if (req.cookies.dataUltimoAcesso) {
+      resp.write('<p>');
+      resp.write('Seu último acesso foi em ' + req.cookies.dataUltimoAcesso); 
+      resp.write('</p>');
+    }
+    resp.write('<a class="btn btn-primary" href="/listarUsuarios">Listar Interessados</a>');
+    resp.write('<a class="btn btn-primary" href="/listarPets">Listar Pets</a>');
+    resp.write('<a class="btn btn-primary" href="/desejarAdocao">Desejar Adoção</a>');
+    resp.write('</body>');
+    resp.write('</html>');
+    resp.end();
+  });
+
+
+
+          
+
+
+
 
 app.listen(porta, host, () => {
     console.log(`Servidor rodando em http://${host}:${porta}`);
-})
+});
+
